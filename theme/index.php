@@ -140,12 +140,40 @@
                             <p class="font-roboto">Saldo Conta Corrente</p>
                           </div>
                           <div class="col-xl-12 p-0 left_side_earning">
-                            <h5>$1004.11</h5>
-                            <p class="font-roboto">This Month Profit</p>
+                            <?php
+                              $query = "SELECT FORMAT(SUM(IF (id_despesa>0, 0, valor)),2) as receita from banco where MONTH(data) = (MONTH(current_date())-1) and year(data) = year(current_date())";
+                              $stmt = $objUser->runQuery($query);
+                              $stmt->execute();
+                            ?> 
+                            <h5>
+                              <?php 
+                                  if($stmt->rowCount() > 0){
+                                    while($rowUser = $stmt->fetch(PDO::FETCH_ASSOC)){
+                                      print($rowUser['receita']);
+                                    }
+                                  }
+                                ?>  
+                              € 
+                            </h5>
+                            <p class="font-roboto">Receita no último mês</p>
                           </div>
                           <div class="col-xl-12 p-0 left_side_earning">
-                            <h5>90%</h5>
-                            <p class="font-roboto">This Month Sale</p>
+                            <?php
+                                $query = "SELECT FORMAT(SUM(IF (id_receita>0, 0, valor)),2) as despesa from banco where MONTH(data) = (MONTH(current_date())-1) and year(data) = year(current_date())";
+                                $stmt = $objUser->runQuery($query);
+                                $stmt->execute();
+                              ?> 
+                              <h5>
+                                <?php 
+                                    if($stmt->rowCount() > 0){
+                                      while($rowUser = $stmt->fetch(PDO::FETCH_ASSOC)){
+                                        print($rowUser['despesa']);
+                                      }
+                                    }
+                                  ?>  
+                                € 
+                              </h5>
+                            <p class="font-roboto">Despesa no último mês</p>
                           </div>
                           <div class="col-xl-12 p-0 left-btn"><a class="btn btn-gradient">Summary</a></div>
                         </div>
@@ -157,8 +185,8 @@
                               <div class="inner-top-left">
                                 <ul class="d-flex list-unstyled">
                                   <li>Daily</li>
-                                  <li class="active">Weekly</li>
-                                  <li>Monthly</li>
+                                  <li>Weekly</li>
+                                  <li class="active">Monthly</li>
                                   <li>Yearly</li>
                                 </ul>
                               </div>
@@ -166,8 +194,8 @@
                             <div class="col-xl-4 col-md-4 col-sm-4 col-12 p-0 justify-content-end">
                               <div class="inner-top-right">
                                 <ul class="d-flex list-unstyled justify-content-end">
-                                  <li>Online</li>
-                                  <li>Store</li>
+                                  <li>Receita</li>
+                                  <li>Despesa</li>
                                 </ul>
                               </div>
                             </div>
@@ -547,6 +575,126 @@
         </footer>
       </div>
     </div>
+    <?php 
+    $query = "SELECT FORMAT(SUM(IF (id_receita>0, 0, valor)),2) as despesa from banco where MONTH(data) = MONTH(current_date()) and year(data) = year(current_date())";
+    $stmt = $objUser->runQuery($query);
+    $stmt->execute();
+    ?> 
+    <h5 id="des">
+    <?php 
+        if($stmt->rowCount() > 0){
+            while($rowUser = $stmt->fetch(PDO::FETCH_ASSOC)){
+            if ($rowUser['despesa'] == null){
+              echo "0,00";  
+            } print($rowUser['despesa']);
+            }
+        }
+        ?>  
+    </h5>
+    <?php 
+    $query = "SELECT FORMAT(SUM(IF (id_receita>0, 0, valor)),2) as despesa from banco where MONTH(data) = (MONTH(current_date())-1) and year(data) = year(current_date())";
+    $stmt = $objUser->runQuery($query);
+    $stmt->execute();
+    ?> 
+    <h5 id="des2">
+    <?php 
+        if($stmt->rowCount() > 0){
+            while($rowUser = $stmt->fetch(PDO::FETCH_ASSOC)){
+              if ($rowUser['despesa'] == null){
+                echo "0,00";  
+              } print($rowUser['despesa']);
+              }
+        }
+        ?>  
+    </h5>
+
+
+    <p id="demo"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <p id="demo5"></p>
+    <p id="demo6"></p>
+    <p id="demo7"></p>
+    <p id="demo8"></p>
+    <p id="demo9"></p>
+    <p id="demo10"></p>
+    <p id="demo11"></p>
+    <p id="demo12"></p>
+    <p id="demo13"></p>
+
+    <script>
+      var month = new Array();
+      month[0] = "jan";
+      month[1] = "fev";
+      month[2] = "mar";
+      month[3] = "abr";
+      month[4] = "mai";
+      month[5] = "jun";
+      month[6] = "jul";
+      month[7] = "ago";
+      month[8] = "set";
+      month[9] = "out";
+      month[10] = "nov";
+      month[11] = "dez";
+      month[-1] = "dez";
+      month[-2] = "nov";
+      month[-3] = "out";
+      month[-4] = "set";
+      month[-5] = "ago";
+      month[-6] = "jul";
+      month[-7] = "jun";
+      month[-8] = "mai";
+      month[-9] = "abr";
+      month[-10] = "mar";
+      month[-11] = "fev";
+      month[-12] = "jan";
+    
+      var d = new Date();
+      var n = month[d.getMonth()];
+      document.getElementById("demo").innerHTML = n;
+      var d1= Number(d.getMonth());
+      var d2 = d1-1;
+      var n12 = month[d2];
+      document.getElementById("demo2").innerHTML = n12;
+      var d3 = d1-2;
+      var n11 = month[d3];
+      document.getElementById("demo3").innerHTML = n11;
+      var d4 = d1-3;
+      var n10 = month[d4];
+      document.getElementById("demo4").innerHTML = n10;
+      var d5 = d1-4;
+      var n9 = month[d5];
+      document.getElementById("demo5").innerHTML = n9;
+      var d6 = d1-5;
+      var n8 = month[d6];
+      document.getElementById("demo6").innerHTML = n8;
+      var d7 = d1-6;
+      var n7 = month[d7];
+      document.getElementById("demo7").innerHTML = n7;
+      var d8 = d1-7;
+      var n6 = month[d8];
+      document.getElementById("demo8").innerHTML = n6;
+      var d9 = d1-8;
+      var n5 = month[d9];
+      document.getElementById("demo9").innerHTML = n5;
+      var d10 = d1-9;
+      var n4 = month[d10];
+      document.getElementById("demo10").innerHTML = n4;
+      var d11 = d1-10;
+      var n3 = month[d11];
+      document.getElementById("demo11").innerHTML = n3;
+      var d12 = d1-11;
+      var n2 = month[d12];
+      document.getElementById("demo12").innerHTML = n2;
+      var d13 = d1-12;
+      var n1 = month[d13];
+      document.getElementById("demo13").innerHTML = n1;
+
+
+
+    </script>
+
     <!-- latest jquery-->
     <script src="../assets/js/jquery-3.5.1.min.js"></script>
     <!-- Bootstrap js-->

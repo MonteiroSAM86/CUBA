@@ -32,13 +32,32 @@ function checkTime(i) {
 }
 
 // currently sale
+
+var des = document.getElementById("des").innerHTML;
+var des2 = document.getElementById("des2").innerHTML;
+
+var demo = document.getElementById("demo").innerHTML;
+var demo2 = document.getElementById("demo2").innerHTML;
+var demo3 = document.getElementById("demo3").innerHTML;
+var demo4 = document.getElementById("demo4").innerHTML;
+var demo5 = document.getElementById("demo5").innerHTML;
+var demo6 = document.getElementById("demo6").innerHTML;
+var demo7 = document.getElementById("demo7").innerHTML;
+var demo8 = document.getElementById("demo8").innerHTML;
+var demo9 = document.getElementById("demo9").innerHTML;
+var demo10 = document.getElementById("demo10").innerHTML;
+var demo11 = document.getElementById("demo11").innerHTML;
+var demo12 = document.getElementById("demo12").innerHTML;
+var demo13 = document.getElementById("demo13").innerHTML;
+
+
 var options = {
     series: [{
-        name: 'Teste1',
+        name: 'Receita',
         data: [6, 20, 15, 40, 18, 20, 18, 23, 18, 35, 30, 55, 0]
     }, {
-        name: 'Teste2',
-        data: [2, 22, 35, 32, 40, 25, 50, 38, 42, 28, 20, 45, 0]
+        name: 'Despesa',
+        data: [2, 22, 35, 32, 40, 25, 50, 38, 42, 28, 20, des2, des]
     }],
     chart: {
         height: 240,
@@ -59,7 +78,7 @@ var options = {
         offsetX: 0,
         offsetY: 0,
         show: false,
-        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan"],
+        categories: [demo13, demo12, demo11, demo10, demo9, demo8, demo7, demo6, demo5, demo4, demo3, demo2, demo],
         labels: {
             low: 0,
             offsetX: 0,
