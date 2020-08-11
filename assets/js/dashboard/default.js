@@ -35,6 +35,31 @@ function checkTime(i) {
 
 var des = document.getElementById("des").innerHTML;
 var des2 = document.getElementById("des2").innerHTML;
+var des3 = document.getElementById("des3").innerHTML;
+var des4 = document.getElementById("des4").innerHTML;
+var des5 = document.getElementById("des5").innerHTML;
+var des6 = document.getElementById("des6").innerHTML;
+var des7 = document.getElementById("des7").innerHTML;
+var des8 = document.getElementById("des8").innerHTML;
+var des9 = document.getElementById("des9").innerHTML;
+var des10 = document.getElementById("des10").innerHTML;
+var des11 = document.getElementById("des11").innerHTML;
+var des12 = document.getElementById("des12").innerHTML;
+var des13 = document.getElementById("des13").innerHTML;
+
+var rec = Number(document.getElementById("rec"));
+var rec2 = Number(document.getElementById("rec2"));
+var rec3 = Number(document.getElementById("rec3"));
+var rec4 = Number(document.getElementById("rec4"));
+var rec5 = document.getElementById("rec5").innerHTML;
+var rec6 = document.getElementById("rec6").innerHTML;
+var rec7 = document.getElementById("rec7").innerHTML;
+var rec8 = document.getElementById("rec8").innerHTML;
+var rec9 = document.getElementById("rec9").innerHTML;
+var rec10 = document.getElementById("rec10").innerHTML;
+var rec11 = document.getElementById("rec11").innerHTML;
+var rec12 = document.getElementById("rec12").innerHTML;
+var rec13 = document.getElementById("rec13").innerHTML;
 
 var demo = document.getElementById("demo").innerHTML;
 var demo2 = document.getElementById("demo2").innerHTML;
@@ -54,10 +79,10 @@ var demo13 = document.getElementById("demo13").innerHTML;
 var options = {
     series: [{
         name: 'Receita',
-        data: [6, 20, 15, 40, 18, 20, 18, 23, 18, 35, 30, 55, 0]
+        data: [rec13, rec12, rec11, rec10, rec9, rec8, rec7, rec6, rec5, rec4, rec3, rec2, rec]
     }, {
         name: 'Despesa',
-        data: [2, 22, 35, 32, 40, 25, 50, 38, 42, 28, 20, des2, des]
+        data: [des13, des12, des11, des10, des9, des8, des7, des6, des5, des4, des3, des2, des]
     }],
     chart: {
         height: 240,
